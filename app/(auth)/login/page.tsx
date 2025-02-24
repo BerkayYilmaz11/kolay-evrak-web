@@ -1,27 +1,29 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { useRouter } from "next/navigation"
-import { FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { auth } from "@/utils/auth";
 
 export default function LoginPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   async function onSubmit(event: React.FormEvent) {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
 
     try {
       // TODO: Implement actual login logic
-      router.push("/dashboard")
+      auth.login("fasfsafa");
+      router.push("/dashboard");
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
@@ -33,7 +35,7 @@ export default function LoginPage() {
           <h1 className="text-2xl font-semibold tracking-tight">KolayEvrak</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-         Giriş yapmak için email adresinizi giriniz
+          Giriş yapmak için email adresinizi giriniz
         </p>
       </div>
       <form onSubmit={onSubmit}>
@@ -66,5 +68,5 @@ export default function LoginPage() {
         </div>
       </form>
     </div>
-  )
+  );
 }
